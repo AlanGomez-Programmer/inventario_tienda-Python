@@ -84,4 +84,23 @@ def eliminar_producto():
 
     guardar_datos(ruta_inventario, productos)
 
-eliminar_producto()
+def calcular_valor_total():
+    productos = leer_archivo(ruta_inventario)
+
+    mostar_separadores()
+    print("--- VALOR TOTAL DEL INVENTARIO ---")
+
+    if len(productos) == 0:
+        print(f"\033[031mERROR: No hay productos agregados \033[0m")
+        return
+
+    operacion = 0
+    total = 0
+
+    for  producto in productos:
+        precio = productos[producto]["precio"]
+        cantidad = productos[producto]["cantidad"]
+        operacion = precio * cantidad
+        total += operacion 
+
+    print(f"El valor total del inventario es: {total}")   
