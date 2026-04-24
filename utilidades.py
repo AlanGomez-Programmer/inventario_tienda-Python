@@ -96,3 +96,15 @@ def pedir_cantidad():
                 return cantidad
         except ValueError:
             print(f"\033[031mERROR: Solo se permiten numeros enteros \033[0m")
+
+def producto_existe():
+    productos = leer_archivo(ruta_inventario)
+
+    while True:
+        producto = pedir_letras("PRODUCTO: ")
+
+        if producto in productos:
+            return producto
+        else:
+            print(f"\033[031mERROR: No existe ese producto \033[0m")
+            continue

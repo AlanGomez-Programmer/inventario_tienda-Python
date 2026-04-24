@@ -6,7 +6,8 @@ from utilidades import (
     guardar_datos,
     validar_producto, 
     pedir_precio, 
-    pedir_cantidad
+    pedir_cantidad,
+    producto_existe
 ) 
 
 def menu():
@@ -57,4 +58,16 @@ def listar_productos():
             print(f"{contador}. {producto}")
             print(f"PRECIO: {precio}")
             print(f"CANTIDAD DE PRODUCTOS DISPONIBLES: {cantidad}")
-            
+
+def actualizar_cantidad():
+    productos = leer_archivo(ruta_inventario)
+    mostar_separadores()
+    print("--- ACTULIZACION DE CANTIDAD DE PRODUCTOS ---")
+    producto = producto_existe()
+    cantidad = pedir_cantidad()
+
+    if producto in productos:
+        productos[producto]["cantidad"] = cantidad
+
+    guardar_datos(ruta_inventario, productos)
+    print(f"\033[033mCambio de cantidad de productos actualizado correctamente\033[0m")
