@@ -101,6 +101,11 @@ def producto_existe():
     productos = leer_archivo(ruta_inventario)
 
     while True:
+
+        if len(productos) == 0:
+            print(f"\033[031mERROR: No hay productos agregados \033[0m")
+            return None
+        
         producto = pedir_letras("PRODUCTO: ")
 
         if producto in productos:

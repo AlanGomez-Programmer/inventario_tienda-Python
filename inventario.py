@@ -71,3 +71,17 @@ def actualizar_cantidad():
 
     guardar_datos(ruta_inventario, productos)
     print(f"\033[033mCambio de cantidad de productos actualizado correctamente\033[0m")
+
+def eliminar_producto():
+    productos = leer_archivo(ruta_inventario)
+    mostar_separadores()
+    print("--- ELIMINAR UN PRODUCTO ---")
+    
+    producto = producto_existe()
+
+    if producto in productos:
+        productos.pop(producto)
+
+    guardar_datos(ruta_inventario, productos)
+
+eliminar_producto()
