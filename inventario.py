@@ -40,3 +40,21 @@ def agregar_producto():
 
     guardar_datos(ruta_inventario, productos)
     print(f"\033[033Producto Registrado exitosamente \033[0m")
+
+def listar_productos():
+    productos = leer_archivo(ruta_inventario)
+
+    if len(productos) == 0:
+        print(f"\033[031mERROR: No hay productos por mostrar \033[0m")
+        return
+    else:
+        contador = 0
+        for producto in productos:
+            precio = productos[producto]["precio"]
+            cantidad = productos[producto]["cantidad"]
+            contador += 1
+            print("-"*40)
+            print(f"{contador}. {producto}")
+            print(f"PRECIO: {precio}")
+            print(f"CANTIDAD DE PRODUCTOS DISPONIBLES: {cantidad}")
+            
