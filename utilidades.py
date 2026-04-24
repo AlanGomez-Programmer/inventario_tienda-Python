@@ -113,3 +113,15 @@ def producto_existe():
         else:
             print(f"\033[031mERROR: No existe ese producto \033[0m")
             continue
+
+# FUNCION DE SALIDA
+
+def salida():
+    while True:
+        mensaje = input(f"\033[32mPresione ENTER para regresar...\033[0m")
+
+        if mensaje != "":
+            print(f"\033[031mERROR: Debe presionar ENTER\033[0m")
+            continue
+        else:
+            return

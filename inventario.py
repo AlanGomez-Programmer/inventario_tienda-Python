@@ -7,7 +7,8 @@ from utilidades import (
     validar_producto, 
     pedir_precio, 
     pedir_cantidad,
-    producto_existe
+    producto_existe,
+    salida
 ) 
 
 def menu():
@@ -37,6 +38,7 @@ def menu():
             break
         else:
             print("\033[31mError: Opcion no existe \033[0m")
+            salida()
 
 def agregar_producto():
     productos = leer_archivo(ruta_inventario)
@@ -55,6 +57,7 @@ def agregar_producto():
 
     guardar_datos(ruta_inventario, productos)
     print(f"\033[033Producto Registrado exitosamente \033[0m")
+    salida()
 
 def listar_productos():
     productos = leer_archivo(ruta_inventario)
@@ -72,6 +75,7 @@ def listar_productos():
             print(f"{contador}. {producto}")
             print(f"PRECIO: {precio}")
             print(f"CANTIDAD DE PRODUCTOS DISPONIBLES: {cantidad}")
+    salida()
 
 def actualizar_cantidad():
     productos = leer_archivo(ruta_inventario)
@@ -85,6 +89,7 @@ def actualizar_cantidad():
 
     guardar_datos(ruta_inventario, productos)
     print(f"\033[033mCambio de cantidad de productos actualizado correctamente\033[0m")
+    salida()
 
 def eliminar_producto():
     productos = leer_archivo(ruta_inventario)
@@ -97,6 +102,8 @@ def eliminar_producto():
         productos.pop(producto)
 
     guardar_datos(ruta_inventario, productos)
+    print(f"\033[033mProducto eliminado correctamente\033[0m")
+    salida()
 
 def calcular_valor_total():
     productos = leer_archivo(ruta_inventario)
@@ -117,6 +124,7 @@ def calcular_valor_total():
         operacion = precio * cantidad
         total += operacion 
 
-    print(f"El valor total del inventario es: {total}")   
+    print(f"El valor total del inventario es: {total}")
+    salida()   
 
 menu()
