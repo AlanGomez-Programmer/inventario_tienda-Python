@@ -1,5 +1,5 @@
 from utilidades import ( 
-    mostar_separadores, 
+    mostrar_separadores, 
     pedir_num_enteros, 
     ruta_inventario, 
     leer_archivo, 
@@ -12,21 +12,35 @@ from utilidades import (
 
 def menu():
     while True:
-        mostar_separadores()
+        mostrar_separadores()
         print("--- MENU DE INVENTARIO ---")
         print("1. Agregar Producto")
         print("2. Listar Productos")
         print("3. Actualizar Cantidad")
         print("4. Eliminar Producto")
         print("5. Calcular Valor Total del Inventario")
+        print("6. Salir")
         opci = pedir_num_enteros("Ingrese una opción: ")
 
         if opci == 1:
             agregar_producto()
+        elif opci == 2:
+            listar_productos()
+        elif opci == 3:
+            actualizar_cantidad()
+        elif opci == 4:
+            eliminar_producto()
+        elif opci == 5:
+            calcular_valor_total()
+        elif opci == 6:
+            print("Saliendo...")
+            break
+        else:
+            print("\033[31mError: Opcion no existe \033[0m")
 
 def agregar_producto():
     productos = leer_archivo(ruta_inventario)
-    mostar_separadores()
+    mostrar_separadores()
     print("--- REGISTRO DE PRODUCTO ---")
     nombre_producto = validar_producto()
     precio = pedir_precio()
@@ -61,7 +75,7 @@ def listar_productos():
 
 def actualizar_cantidad():
     productos = leer_archivo(ruta_inventario)
-    mostar_separadores()
+    mostrar_separadores()
     print("--- ACTULIZACION DE CANTIDAD DE PRODUCTOS ---")
     producto = producto_existe()
     cantidad = pedir_cantidad()
@@ -74,7 +88,7 @@ def actualizar_cantidad():
 
 def eliminar_producto():
     productos = leer_archivo(ruta_inventario)
-    mostar_separadores()
+    mostrar_separadores()
     print("--- ELIMINAR UN PRODUCTO ---")
     
     producto = producto_existe()
@@ -87,7 +101,7 @@ def eliminar_producto():
 def calcular_valor_total():
     productos = leer_archivo(ruta_inventario)
 
-    mostar_separadores()
+    mostrar_separadores()
     print("--- VALOR TOTAL DEL INVENTARIO ---")
 
     if len(productos) == 0:
@@ -104,3 +118,5 @@ def calcular_valor_total():
         total += operacion 
 
     print(f"El valor total del inventario es: {total}")   
+
+menu()

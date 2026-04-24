@@ -1,7 +1,7 @@
 import os
 from json import load, dumps, dump
 
-def mostar_separadores():
+def mostrar_separadores():
     os.system("clear")
     print("="*40)
 
@@ -64,7 +64,7 @@ def pedir_letras(mensaje):
 def validar_producto():
     productos = leer_archivo(ruta_inventario)
     while True:
-        producto = pedir_letras("PRODUCTO: ").strip().capitalize()
+        producto = pedir_letras("PRODUCTO: ").strip().title()
         
         if producto in productos:
             print(f"\033[031mERROR: Ese producto ya existe \033[0m")
