@@ -132,5 +132,3 @@ def calcular_valor_total():
 
     print(f"El valor total del inventario es: {total}")
     salida()   
-
-menu()
