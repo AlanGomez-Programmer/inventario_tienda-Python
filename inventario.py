@@ -65,7 +65,7 @@ def listar_productos():
     print("--- LISTADO DE PRODUCTOS ---")
     if len(productos) == 0:
         print(f"\033[031mERROR: No hay productos por mostrar \033[0m")
-        return
+        salida()
     else:
         contador = 0
         for producto in productos:
@@ -76,13 +76,18 @@ def listar_productos():
             print(f"{contador}. {producto}")
             print(f"PRECIO: {precio}")
             print(f"CANTIDAD DE PRODUCTOS DISPONIBLES: {cantidad}")
-    salida()
+        salida()
 
 def actualizar_cantidad():
     productos = leer_archivo(ruta_inventario)
     mostrar_separadores()
     print("--- ACTULIZACION DE CANTIDAD DE PRODUCTOS ---")
     producto = producto_existe()
+
+    if producto == None:
+        salida()
+        return
+    
     cantidad = pedir_cantidad()
 
     if producto in productos:
