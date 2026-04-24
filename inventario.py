@@ -61,7 +61,8 @@ def agregar_producto():
 
 def listar_productos():
     productos = leer_archivo(ruta_inventario)
-
+    mostrar_separadores()
+    print("--- LISTADO DE PRODUCTOS ---")
     if len(productos) == 0:
         print(f"\033[031mERROR: No hay productos por mostrar \033[0m")
         return
